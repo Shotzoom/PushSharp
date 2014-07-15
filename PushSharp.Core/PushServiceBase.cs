@@ -30,6 +30,13 @@ namespace PushSharp.Core
 		public event DeviceSubscriptionExpiredDelegate OnDeviceSubscriptionExpired;
 		public event DeviceSubscriptionChangedDelegate OnDeviceSubscriptionChanged;
 
+        protected void RaiseChannelException(IPushChannel pushChannel, Exception error)
+        {
+            var evt = OnChannelException;
+            if (evt != null)
+                evt(this, pushChannel, error);
+        }
+
 		protected void RaiseSubscriptionExpired(string expiredSubscriptionId, DateTime expirationDateUtc, INotification notification)
 		{
 			var evt = OnDeviceSubscriptionExpired;
