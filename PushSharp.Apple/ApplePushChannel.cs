@@ -102,7 +102,7 @@ namespace PushSharp.Apple
 
 				var appleNotification = notification as AppleNotification;
 				
-				bool isOkToSend = true;
+				// bool isOkToSend = true;
 				byte[] notificationData = new byte[] {};
 
 				try
@@ -111,8 +111,8 @@ namespace PushSharp.Apple
 				}
 				catch (NotificationFailureException nfex)
 				{
-					//Bad notification format already
-					isOkToSend = false;
+					// Bad notification format already
+					// isOkToSend = false;
 
 					Interlocked.Decrement(ref trackedNotificationCount);
 					
