@@ -115,11 +115,7 @@ namespace PushSharp.Apple
             if (this.ContentAvailable.HasValue)
             {
                 aps["content-available"] = new JValue(this.ContentAvailable.Value);
-                if (string.IsNullOrEmpty(this.Sound))
-                {
-                    //You need to add an empty string for sound or the payload is not sent
-                    aps["sound"] = new JValue("");
-                }
+                aps["sound"] = aps["sound"] ?? new JValue(string.Empty);
             }
 
 		    if (aps.Count > 0)
